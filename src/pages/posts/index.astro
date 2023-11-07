@@ -1,0 +1,23 @@
+---
+import Layout from "../../layouts/Layout.astro";
+import Title from "../../components/Title.astro";
+import { getCollection } from "astro:content";
+
+const posts = await getCollection("posts");
+---
+
+<Layout>
+  <Title slot="head">All Posts</Title>
+  <div class="p-2">
+    <h1>All posts</h1>
+    <ul class="list-disc list-inside">
+      {
+        posts.map((post) => (
+          <li>
+            <a href={`/posts/${post.slug}`}>{post.data.title}</a>
+          </li>
+        ))
+      }
+    </ul>
+  </div>
+</Layout>
