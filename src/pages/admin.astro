@@ -1,0 +1,76 @@
+---
+const branch: string = import.meta.env.PUBLIC_BRANCH ?? "main";
+const siteName = "TODO";
+const deployBadgeUuid = "TODO";
+---
+
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="robots" content="noindex" />
+    <title>Content Manager of Bruno Roemers</title>
+    {/* tell Decap CMS which config to load */}
+    <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
+  </head>
+  <body data-git-branch={branch}>
+    <div id="nc-root">
+      <!-- Decap CMS renders here -->
+    </div>
+    <div class="fixed left-3 bottom-3">
+      <a
+        class="block"
+        href=`https://app.netlify.com/sites/${siteName}/deploys`
+        target="_blank"
+        rel="noopener noreferrer"
+      >
+        <img
+          id="deploy-status-img"
+          src={`https://api.netlify.com/api/v1/badges/${deployBadgeUuid}/deploy-status?branch=${branch}`}
+          alt="Netlify Deploy Status"
+        />
+        <script>
+          const pollingDelayInMs = 2000;
+          async function updateNetlifyStatusBadge() {
+            // force browser to rerender the image
+            const img = document.getElementById(
+              "deploy-status-img",
+            ) as HTMLImageElement;
+
+            const src = new URL(img.src);
+            src.hash = String(new Date().getMilliseconds());
+            img.src = String(src);
+
+            // queue next update
+            setTimeout(updateNetlifyStatusBadge, pollingDelayInMs);
+          }
+          setTimeout(updateNetlifyStatusBadge, pollingDelayInMs);
+        </script>
+      </a>
+    </div>
+    <script>
+      import CMS from "decap-cms-app";
+      import type { CmsConfig } from "decap-cms-core";
+
+      const branch = document.body.dataset.gitBranch;
+      const url = new URL(String(window.location));
+
+      CMS.init({
+        // NOTE: merges with /admin/config.yml if it exists
+        config: {
+          backend: {
+            branch: branch,
+          },
+          site_url: url.origin,
+        } as CmsConfig,
+      });
+    </script>
+    <style is:global>
+      /* Workaround for https://github.com/netlify/netlify-cms/issues/5092 */
+      [data-slate-editor] {
+        -webkit-user-modify: read-write !important;
+      }
+    </style>
+  </body>
+</html>

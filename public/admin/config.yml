@@ -1,0 +1,17 @@
+backend:
+  name: "github"
+  auth_scope: "public_repo"
+  # NOTE: branch is set programmatically in admin.astro
+  repo: "brunoRoemers/roemers.io-v3"
+media_folder: "src/assets/uploads"
+public_folder: "/assets/uploads"
+local_backend: true
+collections:
+  - name: 'posts'
+    label: 'Posts'
+    folder: "src/content/posts"
+    slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
+    summary: "{{title}} -- /{{filename}}"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
