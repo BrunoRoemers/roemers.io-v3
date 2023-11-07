@@ -1,4 +1,5 @@
 ---
+import Title from "../components/Title.astro";
 const branch: string = import.meta.env.PUBLIC_BRANCH ?? "main";
 const siteName = "TODO";
 const deployBadgeUuid = "TODO";
@@ -10,7 +11,7 @@ const deployBadgeUuid = "TODO";
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
-    <title>Content Manager of Bruno Roemers</title>
+    <Title>Content Manager</Title>
     {/* tell Decap CMS which config to load */}
     <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
   </head>

@@ -51,4 +51,5 @@ Feel free to check [our documentation](https://docs.astro.build) or jump into ou
 - [ ] configure Netlify deploy badge
 - [ ] test Decap CMS working on Netlify
 - [ ] test Decap CMS branch selection working
+- [ ] configure SEO tags
 - [ ] configure favicon
