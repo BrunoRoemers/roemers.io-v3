@@ -1,0 +1,19 @@
+---
+import { cc, type ConfigurableClass } from "../utils/configurable-class";
+interface Props {
+  href: string;
+  external?: boolean;
+  class?: ConfigurableClass;
+}
+
+const { class: clx, href, external } = Astro.props;
+---
+
+<a
+  href={href}
+  target={external ? "_blank" : undefined}
+  rel={external ? "noopener noreferrer" : undefined}
+  class={cc("text-blue-600 hover:text-blue-700 hover:underline")(clx)}
+>
+  <slot />
+</a>
