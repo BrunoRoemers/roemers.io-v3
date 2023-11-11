@@ -3,6 +3,7 @@ import { getCollection, getEntry } from "astro:content";
 import Layout from "../../layouts/Layout.astro";
 import Title from "../../components/Title.astro";
 import Prose from "../../components/Prose.astro";
+import Link from "../../components/Link.astro";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -19,7 +20,20 @@ const { Content } = await post.render();
 <Layout>
   <Title slot="head">{post.data.title}</Title>
   <h1>{post.data.title}</h1>
-  <Prose>
-    <Content />
-  </Prose>
+  <p>Related projects</p>
+  <ul class="list-disc list-inside">
+    {
+      post.data.relatedProjects.map(async ({ collection, slug }) => {
+        const project = await getEntry(collection, slug);
+        return (
+          <li>
+            <Link href={`/projects/${project.slug}`}>{project.data.title}</Link>
+          </li>
+        );
+      })
+    }
+  </ul>
 </Layout>
+<Prose>
+  <Content />
+</Prose>

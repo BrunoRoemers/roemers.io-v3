@@ -1,5 +1,7 @@
 ---
 title: Hello World 😎
+relatedProjects:
+  - example-project
 ---
 Ipsum elit reprehenderit laboris sunt ex nisi dolor. Occaecat ad eiusmod nostrud ut nisi excepteur velit pariatur. In ut nostrud nostrud elit dolore irure aliqua deserunt.
 

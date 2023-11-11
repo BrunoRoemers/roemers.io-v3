@@ -30,3 +30,10 @@ collections:
       - name: body
         label: Content
         widget: markdown
+      - name: relatedProjects
+        label: Related Projects
+        widget: relation
+        collection: projects
+        search_fields: ["title"]
+        value_field: "{{slug}}"
+        multiple: true
