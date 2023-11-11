@@ -4,6 +4,7 @@ import Layout from "../../layouts/Layout.astro";
 import Title from "../../components/Title.astro";
 import Prose from "../../components/Prose.astro";
 import Link from "../../components/Link.astro";
+import { getEntries } from "astro:content";
 
 export async function getStaticPaths() {
   const posts = await getCollection("posts");
@@ -14,6 +15,7 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.params;
 const post = await getEntry("posts", slug);
+const relatedProjects = await getEntries(post.data.relatedProjects);
 const { Content } = await post.render();
 ---
 
@@ -23,14 +25,11 @@ const { Content } = await post.render();
   <p>Related projects</p>
   <ul class="list-disc list-inside">
     {
-      post.data.relatedProjects.map(async ({ collection, slug }) => {
-        const project = await getEntry(collection, slug);
-        return (
-          <li>
-            <Link href={`/projects/${project.slug}`}>{project.data.title}</Link>
-          </li>
-        );
-      })
+      relatedProjects.map(async (project) => (
+        <li>
+          <Link href={`/projects/${project.slug}`}>{project.data.title}</Link>
+        </li>
+      ))
     }
   </ul>
 </Layout>
