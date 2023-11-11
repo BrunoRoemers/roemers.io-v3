@@ -4,14 +4,15 @@ backend:
   # NOTE: branch is set programmatically in admin.astro
   repo: "brunoRoemers/roemers.io-v3"
 media_folder: "src/assets/uploads"
-public_folder: "/assets/uploads"
+public_folder: "/src/assets/uploads"
 local_backend: true
 collections:
   - name: 'projects'
     label: 'Projects'
     folder: "src/content/projects"
     slug: "{{slug}}"
-    summary: "{{title}} -- /{{filename}}"
+    summary: "{{title}}"
+    preview_path: projects/{{slug}}
     create: true
     fields:
       - { label: "Title", name: "title", widget: "string" }
@@ -19,7 +20,13 @@ collections:
     label: 'Posts'
     folder: "src/content/posts"
     slug: "{{year}}-{{month}}-{{day}}-{{slug}}"
-    summary: "{{title}} -- /{{filename}}"
+    summary: "{{title}}"
+    preview_path: posts/{{slug}}
     create: true
     fields:
-      - { label: "Title", name: "title", widget: "string" }
+      - name: title
+        label: Title
+        widget: string
+      - name: body
+        label: Content
+        widget: markdown
