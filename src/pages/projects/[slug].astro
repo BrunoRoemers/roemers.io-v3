@@ -1,0 +1,20 @@
+---
+import { getCollection, getEntry } from "astro:content";
+import Layout from "../../layouts/Layout.astro";
+import Title from "../../components/Title.astro";
+
+export async function getStaticPaths() {
+  const projects = await getCollection("projects");
+  return projects
+    .map((project) => project.slug)
+    .map((slug) => ({ params: { slug: slug } }));
+}
+
+const { slug } = Astro.params;
+const project = await getEntry("projects", slug);
+---
+
+<Layout>
+  <Title slot="head">{project.data.title}</Title>
+  <h1>{project.data.title}</h1>
+</Layout>

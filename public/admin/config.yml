@@ -7,6 +7,14 @@ media_folder: "src/assets/uploads"
 public_folder: "/assets/uploads"
 local_backend: true
 collections:
+  - name: 'projects'
+    label: 'Projects'
+    folder: "src/content/projects"
+    slug: "{{slug}}"
+    summary: "{{title}} -- /{{filename}}"
+    create: true
+    fields:
+      - { label: "Title", name: "title", widget: "string" }
   - name: 'posts'
     label: 'Posts'
     folder: "src/content/posts"
