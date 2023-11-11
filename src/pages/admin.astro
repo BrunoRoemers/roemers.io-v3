@@ -1,4 +1,5 @@
 ---
+import Favicon from "../components/Favicon.astro";
 import Title from "../components/Title.astro";
 const branch: string = import.meta.env.PUBLIC_BRANCH ?? "main";
 const siteName = "roemers-v3";
@@ -12,6 +13,7 @@ const deployBadgeUuid = "a7d5f5e5-884b-48b6-840e-5949ed6c620b";
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta name="robots" content="noindex" />
     <Title>Content Manager</Title>
+    <Favicon />
     {/* tell Decap CMS which config to load */}
     <link href="/admin/config.yml" type="text/yaml" rel="cms-config-url" />
   </head>
