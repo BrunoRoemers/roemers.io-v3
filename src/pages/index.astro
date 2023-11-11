@@ -1,9 +1,14 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Title from "../components/Title.astro";
+import Link from "../components/Link.astro";
 ---
 
 <Layout>
   <Title slot="head">Home</Title>
   <h1 class="text-3xl font-bold underline">Hello world!</h1>
+  <ul class="list-disc list-inside">
+    <li><Link href="/projects">Projects</Link></li>
+    <li><Link href="/posts">Posts</Link></li>
+  </ul>
 </Layout>
