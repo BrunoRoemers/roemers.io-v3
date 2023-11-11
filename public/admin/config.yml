@@ -4,7 +4,7 @@ backend:
   # NOTE: branch is set programmatically in admin.astro
   repo: "brunoRoemers/roemers.io-v3"
 media_folder: "src/assets/uploads"
-public_folder: "/src/assets/uploads"
+public_folder: "../../assets/uploads"
 local_backend: true
 collections:
   - name: 'projects'

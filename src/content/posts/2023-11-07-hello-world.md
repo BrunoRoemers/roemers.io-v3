@@ -69,4 +69,4 @@ Minim consequat Lorem nostrud aliqua dolor. Ea proident amet pariatur consequat 
 
 # And finally, an image
 
-![Morning sunrise.](/src/assets/uploads/cai-fang-6o9w0mac9-s-unsplash.jpg "Photo by Cai Fang on Unsplash.")
+![Morning sunrise.](../../assets/uploads/cai-fang-6o9w0mac9-s-unsplash.jpg "Photo by Cai Fang on Unsplash.")
