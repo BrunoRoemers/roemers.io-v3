@@ -1,0 +1,16 @@
+---
+import { getCollection } from "astro:content";
+import Link from "./Link.astro";
+
+const projects = await getCollection("projects");
+---
+
+<ul class="list-disc list-inside">
+  {
+    projects.map((project) => (
+      <li>
+        <Link href={`/projects/${project.slug}`}>{project.data.title}</Link>
+      </li>
+    ))
+  }
+</ul>

@@ -2,6 +2,8 @@
 import Layout from "../layouts/Layout.astro";
 import Title from "../components/Title.astro";
 import FancyText from "../components/FancyText.astro";
+import PostList from "../components/PostList.astro";
+import ProjectList from "../components/ProjectList.astro";
 ---
 
 <Layout>
@@ -15,11 +17,13 @@ import FancyText from "../components/FancyText.astro";
           simple="Highlighted Projects 🌱"
         />
       </h1>
-      <section>
-        <h1 class="text-xl">
-          <FancyText fancy="Writings... ✍️" simple="Recent Posts ✍️" />
-        </h1>
-      </section>
+      <ProjectList />
+    </section>
+    <section>
+      <h1 class="text-xl">
+        <FancyText fancy="Writings... ✍️" simple="Recent Posts ✍️" />
+      </h1>
+      <PostList />
     </section>
   </main>
 </Layout>

@@ -1,33 +1,13 @@
 ---
 import Layout from "../../layouts/Layout.astro";
 import Title from "../../components/Title.astro";
-import { getCollection } from "astro:content";
-import Link from "../../components/Link.astro";
-
-const posts = await getCollection("posts");
+import PostList from "../../components/PostList.astro";
 ---
 
 <Layout>
   <Title slot="head">All Posts</Title>
   <div class="p-2">
     <h1>All posts</h1>
-    <ul class="list-disc list-inside">
-      {
-        posts.map((post) => (
-          <li>
-            <Link
-              href={`/posts/${post.slug}`}
-              class={(a) =>
-                a
-                  .filter((v) => v !== "hover:underline")
-                  .concat("hover:text-red-600")
-              }
-            >
-              {post.data.title}
-            </Link>
-          </li>
-        ))
-      }
-    </ul>
+    <PostList />
   </div>
 </Layout>
