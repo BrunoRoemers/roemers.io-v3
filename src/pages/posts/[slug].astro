@@ -15,23 +15,29 @@ export async function getStaticPaths() {
 
 const { slug } = Astro.params;
 const post = await getEntry("posts", slug);
-const relatedProjects = await getEntries(post.data.relatedProjects);
+const relatedProjects = await getEntries(post.data.relatedProjects ?? []);
 const { Content } = await post.render();
 ---
 
 <Layout>
   <Title slot="head">{post.data.title}</Title>
   <h1>{post.data.title}</h1>
-  <p>Related projects</p>
-  <ul class="list-disc list-inside">
-    {
-      relatedProjects.map(async (project) => (
-        <li>
-          <Link href={`/projects/${project.slug}`}>{project.data.title}</Link>
-        </li>
-      ))
-    }
-  </ul>
+  {
+    relatedProjects.length > 0 && (
+      <>
+        <p>Related projects</p>
+        <ul class="list-disc list-inside">
+          {relatedProjects.map(async (project) => (
+            <li>
+              <Link href={`/projects/${project.slug}`}>
+                {project.data.title}
+              </Link>
+            </li>
+          ))}
+        </ul>
+      </>
+    )
+  }
 </Layout>
 <Prose>
   <Content />

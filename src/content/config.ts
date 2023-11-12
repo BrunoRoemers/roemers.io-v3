@@ -11,7 +11,7 @@ const posts = defineCollection({
   type: "content",
   schema: z.object({
     title: z.string(),
-    relatedProjects: z.array(reference("projects")),
+    relatedProjects: z.array(reference("projects")).optional(),
   }),
 });
 
