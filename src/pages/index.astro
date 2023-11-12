@@ -1,14 +1,25 @@
 ---
 import Layout from "../layouts/Layout.astro";
 import Title from "../components/Title.astro";
-import Link from "../components/Link.astro";
+import FancyText from "../components/FancyText.astro";
 ---
 
 <Layout>
   <Title slot="head">Home</Title>
-  <h1 class="text-3xl font-bold underline">Hello world!</h1>
-  <ul class="list-disc list-inside">
-    <li><Link href="/projects">Projects</Link></li>
-    <li><Link href="/posts">Posts</Link></li>
-  </ul>
+  <main>
+    <h1 class="text-3xl">Hi, this is Bruno 👋</h1>
+    <section>
+      <h1 class="text-xl">
+        <FancyText
+          fancy="I'm currently nurturing... 🌱"
+          simple="Highlighted Projects 🌱"
+        />
+      </h1>
+      <section>
+        <h1 class="text-xl">
+          <FancyText fancy="Writings... ✍️" simple="Recent Posts ✍️" />
+        </h1>
+      </section>
+    </section>
+  </main>
 </Layout>

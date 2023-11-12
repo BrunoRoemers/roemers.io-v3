@@ -1,0 +1,39 @@
+---
+interface Props {
+  fancy: string;
+  simple: string;
+}
+
+const { fancy, simple } = Astro.props;
+---
+
+<fancy-text data-fancy={fancy}>{simple}</fancy-text>
+<script>
+  class FancyText extends HTMLElement {
+    #ogInnerHTML;
+
+    constructor() {
+      super();
+      this.#ogInnerHTML = this.innerHTML;
+      this.innerHTML = this.dataset.fancy ?? "";
+    }
+
+    onMouseEnter() {
+      this.innerHTML = this.#ogInnerHTML;
+    }
+
+    onMouseLeave() {
+      this.innerHTML = this.dataset.fancy ?? "";
+    }
+
+    connectedCallback() {
+      this.addEventListener("mouseenter", this.onMouseEnter);
+      this.addEventListener("mouseleave", this.onMouseLeave);
+    }
+    disconnectedCallback() {
+      this.removeEventListener("mouseenter", this.onMouseEnter);
+      this.removeEventListener("mouseleave", this.onMouseLeave);
+    }
+  }
+  customElements.define("fancy-text", FancyText);
+</script>
