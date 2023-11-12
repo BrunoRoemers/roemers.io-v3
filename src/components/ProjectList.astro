@@ -1,15 +1,22 @@
 ---
 import { getCollection } from "astro:content";
-import Link from "./Link.astro";
 
 const projects = await getCollection("projects");
 ---
 
-<ul class="list-disc list-inside">
+<ul class="grid grid-cols-2 gap-2">
   {
     projects.map((project) => (
       <li>
-        <Link href={`/projects/${project.slug}`}>{project.data.title}</Link>
+        <a
+          href={`/projects/${project.slug}`}
+          class="block bg-stone-300 hover:bg-slate-300 px-3 py-2 rounded-sm"
+        >
+          <section>
+            <h1 class="text-2xl">{project.data.title}</h1>
+            blurb here...
+          </section>
+        </a>
       </li>
     ))
   }
