@@ -4,26 +4,29 @@ import Title from "../components/Title.astro";
 import FancyText from "../components/FancyText.astro";
 import PostList from "../components/PostList.astro";
 import ProjectList from "../components/ProjectList.astro";
+import Container from "../components/Container.astro";
 ---
 
 <Layout>
   <Title slot="head">Home</Title>
-  <main>
-    <h1 class="text-3xl">Hi, this is Bruno 👋</h1>
-    <section>
-      <h1 class="text-xl">
-        <FancyText
-          fancy="I'm currently nurturing... 🌱"
-          simple="Highlighted Projects 🌱"
-        />
-      </h1>
-      <ProjectList />
-    </section>
-    <section>
-      <h1 class="text-xl">
-        <FancyText fancy="Writings... ✍️" simple="Recent Posts ✍️" />
-      </h1>
-      <PostList />
-    </section>
-  </main>
+  <Container>
+    <main>
+      <h1 class="text-3xl">Hi, this is Bruno 👋</h1>
+      <section>
+        <h1 class="text-xl">
+          <FancyText
+            fancy="I'm currently nurturing... 🌱"
+            simple="Highlighted Projects 🌱"
+          />
+        </h1>
+        <ProjectList />
+      </section>
+      <section>
+        <h1 class="text-xl mb-2">
+          <FancyText fancy="Writings... ✍️" simple="Recent Posts ✍️" />
+        </h1>
+        <PostList />
+      </section>
+    </main>
+  </Container>
 </Layout>

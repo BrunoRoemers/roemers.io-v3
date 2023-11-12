@@ -2,14 +2,14 @@
 import Favicon from "../components/Favicon.astro";
 ---
 
-<html lang="en">
+<html lang="en" class="h-full">
   <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width" />
     <slot name="head" />
     <Favicon />
   </head>
-  <body>
+  <body class="bg-stone-200 h-full">
     <slot />
   </body>
 </html>

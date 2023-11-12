@@ -2,12 +2,15 @@
 import Layout from "../../layouts/Layout.astro";
 import Title from "../../components/Title.astro";
 import PostList from "../../components/PostList.astro";
+import Container from "../../components/Container.astro";
 ---
 
 <Layout>
   <Title slot="head">All Posts</Title>
-  <div class="p-2">
-    <h1>All posts</h1>
-    <PostList />
-  </div>
+  <Container>
+    <div>
+      <h1 class="text-xl mb-2 text-center">All Posts</h1>
+      <PostList />
+    </div>
+  </Container>
 </Layout>
